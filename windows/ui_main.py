@@ -809,6 +809,8 @@ class AlbinVpnWindow(QMainWindow):
             self.status_lbl.setText(f"{self._tr('connected')} ({'TUN' if use_tun else 'Proxy'} • {core})")
             self._run_live_ping()
             QTimer.singleShot(1200, self._check_both_ips)
+        else:
+            QMessageBox.warning(self, "Albin-vpn", "Core failed to start — check the Logs tab for details.")
 
     def _tick_timer(self) -> None:
         if self.connected and self.active_profile:
